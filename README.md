@@ -2,15 +2,6 @@
 
 China Administration Layout - 中国行政规划 JS 数据
 
-[http://www.mca.gov.cn/article/sj/xzqh](http://www.mca.gov.cn/article/sj/xzqh)
-
-## 全国行政规划 json
-[https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/all.json](https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/all.json)
-
-## 全国省市 txt
-[https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/city.txt](https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/city.txt)
-
-
 ## 工具的作用
     生成中国行政规划的基础数据，数据产生于 ./chinaal_report/
 
@@ -23,3 +14,14 @@ China Administration Layout - 中国行政规划 JS 数据
 
 ### 方法2: 使用 chinaal 路径, 支持相对路径
     chinaal /var/www/your_project_root
+    
+
+## 全国行政规划 json
+[https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/all.json](https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/all.json)
+
+## 全国省市 txt
+[https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/city.txt](https://raw.githubusercontent.com/openjavascript/chinaal/master/china_report/city.txt)
+
+## 中国行政规划原始资源 
+    
+[http://www.mca.gov.cn/article/sj/xzqh](http://www.mca.gov.cn/article/sj/xzqh)
