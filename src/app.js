@@ -88,6 +88,8 @@ export default class App {
         this.aldata = data.aldata;
 
         console.log( 'aldata', this.aldata );
+        console.log( this.appRoot );
+        console.log( this.projectRoot );
     }
 
     fileExists( file ) {

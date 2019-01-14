@@ -167,8 +167,10 @@ var App = function () {
                                 this.aldata = data.aldata;
 
                                 console.log('aldata', this.aldata);
+                                console.log(this.appRoot);
+                                console.log(this.projectRoot);
 
-                            case 5:
+                            case 7:
                             case "end":
                                 return _context2.stop();
                         }
