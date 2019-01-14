@@ -8,9 +8,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 exports.init = init;
 
-var _fs = require("fs");
+var _fsExtra = require("fs-extra");
 
-var _fs2 = _interopRequireDefault(_fs);
+var _fsExtra2 = _interopRequireDefault(_fsExtra);
 
 var _path = require("path");
 
@@ -100,7 +100,13 @@ var App = function () {
             new Promise(function (resolve) {
                 setTimeout(resolve, 1);
             }).then(function () {
-                return _this.getAlData();
+                return _this.getAlFilePath();
+            }).then(function () {
+                _this.splitSource();
+
+                return new Promise(function (resolve) {
+                    setTimeout(resolve, 1);
+                });
             }).then(function () {
                 _this.isGood = 1;
 
@@ -117,6 +123,28 @@ var App = function () {
                 if (_this.confirm == 'no') return;
                 _this.project = new _ProjectExample2.default(_this);
             });
+        }
+    }, {
+        key: "splitSource",
+        value: function splitSource() {
+            var _this2 = this;
+
+            var file = _fsExtra2.default.readFileSync(this.sourcePath, 'utf8');
+            file = file.replace(/[ \t]+$/gm, '');
+            file = file.split(/[\r\n]+/g);
+
+            this.sourceAr = file;
+
+            this.keyItems = {};
+
+            file.map(function (item) {
+                var tmp = item.split(/[\s]+/g);
+                if (tmp.length < 2) return;
+
+                _this2.keyItems[tmp[0]] = tmp[1];
+            });
+
+            console.log(this.keyItems);
         }
     }, {
         key: "getConfirm",
@@ -150,25 +178,32 @@ var App = function () {
             return getConfirm;
         }()
     }, {
-        key: "getAlData",
+        key: "getAlFilePath",
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var data;
+                var data, apath, ppath;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
                                 _context2.next = 2;
-                                return this.prompt(DATA.Q_ALDATA);
+                                return this.prompt(DATA.Q_ALFILEPATH);
 
                             case 2:
                                 data = _context2.sent;
 
-                                this.aldata = data.aldata;
+                                this.alfilepath = data.alfilepath;
 
-                                console.log('aldata', this.aldata);
-                                console.log(this.appRoot);
-                                console.log(this.projectRoot);
+                                apath = _path2.default.resolve(this.appRoot, this.alfilepath);
+                                ppath = _path2.default.resolve(this.projectRoot, this.alfilepath);
+
+
+                                if (_fsExtra2.default.pathExistsSync(ppath)) {
+                                    this.sourcePath = ppath;
+                                } else {
+                                    this.sourcePath = apath;
+                                }
+                                //console.log( 'alfilepath', this.alfilepath, this.sourcePath );
 
                             case 7:
                             case "end":
@@ -178,16 +213,16 @@ var App = function () {
                 }, _callee2, this);
             }));
 
-            function getAlData() {
+            function getAlFilePath() {
                 return _ref2.apply(this, arguments);
             }
 
-            return getAlData;
+            return getAlFilePath;
         }()
     }, {
         key: "fileExists",
         value: function fileExists(file) {
-            return _fs2.default.existsSync(file);
+            return _fsExtra2.default.existsSync(file);
         }
     }, {
         key: "welcome",

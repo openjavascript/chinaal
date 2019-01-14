@@ -3,12 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Q_CONFIRM = exports.Q_ALDATA = undefined;
+exports.Q_CONFIRM = exports.Q_ALFILEPATH = undefined;
 
 var _constant = require("./constant.js");
 
-var Q_ALDATA = exports.Q_ALDATA = [{
-    "name": "aldata",
+var Q_ALFILEPATH = exports.Q_ALFILEPATH = [{
+    "name": "alfilepath",
     "type": "input",
     "message": "请输入行政规划源数据文件",
     "default": "./src/data/source.txt"

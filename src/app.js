@@ -1,5 +1,5 @@
 
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 
 import chalk from 'chalk';
@@ -59,7 +59,13 @@ export default class App {
         new Promise( function( resolve ){
             setTimeout( resolve, 1);
         }).then( () => {
-            return this.getAlData();
+            return this.getAlFilePath();
+        }).then( () => {
+            this.splitSource();
+
+            return new Promise( function( resolve ){
+                setTimeout( resolve, 1);
+            });
         }).then( () => {
             this.isGood = 1;
 
@@ -78,18 +84,43 @@ export default class App {
         });
     }
 
+    splitSource(){
+        let file = fs.readFileSync( this.sourcePath, 'utf8' );
+        file = file.replace( /[ \t]+$/gm, '' );
+        file = file.split( /[\r\n]+/g );
+
+        this.sourceAr = file;
+
+        this.keyItems = {};
+
+        file.map( (item)=>{
+            let tmp = item.split( /[\s]+/g )
+            if( tmp.length < 2 ) return;
+
+            this.keyItems[ tmp[0] ] = tmp[1];
+        });
+
+        console.log( this.keyItems );
+    }
+
     async getConfirm(){
         let data = await this.prompt( DATA.Q_CONFIRM );
         this.confirm = data.confirm;
     }
 
-    async getAlData(){
-        let data = await this.prompt( DATA.Q_ALDATA );
-        this.aldata = data.aldata;
+    async getAlFilePath(){
+        let data = await this.prompt( DATA.Q_ALFILEPATH );
+        this.alfilepath = data.alfilepath;
 
-        console.log( 'aldata', this.aldata );
-        console.log( this.appRoot );
-        console.log( this.projectRoot );
+        let apath = path.resolve( this.appRoot, this.alfilepath );
+        let ppath = path.resolve( this.projectRoot, this.alfilepath );
+
+        if( fs.pathExistsSync( ppath ) ){
+            this.sourcePath = ppath;
+        }else{
+            this.sourcePath = apath;
+        }
+        //console.log( 'alfilepath', this.alfilepath, this.sourcePath );
     }
 
     fileExists( file ) {

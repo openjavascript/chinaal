@@ -3,9 +3,9 @@ import {
     APPNAME
 } from './constant.js';
 
-export const Q_ALDATA = [
+export const Q_ALFILEPATH = [
     { 
-        "name": "aldata"
+        "name": "alfilepath"
         , "type": "input"
         , "message": "请输入行政规划源数据文件"
         , "default": "./src/data/source.txt"
