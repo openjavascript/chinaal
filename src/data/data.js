@@ -3,11 +3,12 @@ import {
     APPNAME
 } from './constant.js';
 
-export const Q_EXAMPLE = [
+export const Q_ALDATA = [
     { 
-        "name": "example"
+        "name": "aldata"
         , "type": "input"
-        , "message": "示例输入"
+        , "message": "请输入行政规划源数据文件"
+        , "default": "./src/data/source.txt"
     }
 ];
 

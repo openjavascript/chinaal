@@ -3,14 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Q_CONFIRM = exports.Q_EXAMPLE = undefined;
+exports.Q_CONFIRM = exports.Q_ALDATA = undefined;
 
 var _constant = require("./constant.js");
 
-var Q_EXAMPLE = exports.Q_EXAMPLE = [{
-    "name": "example",
+var Q_ALDATA = exports.Q_ALDATA = [{
+    "name": "aldata",
     "type": "input",
-    "message": "示例输入"
+    "message": "请输入行政规划源数据文件",
+    "default": "./src/data/source.txt"
 }];
 
 var Q_CONFIRM = exports.Q_CONFIRM = [{

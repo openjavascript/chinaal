@@ -59,7 +59,7 @@ export default class App {
         new Promise( function( resolve ){
             setTimeout( resolve, 1);
         }).then( () => {
-            return this.getExample();
+            return this.getAlData();
         }).then( () => {
             this.isGood = 1;
 
@@ -83,9 +83,11 @@ export default class App {
         this.confirm = data.confirm;
     }
 
-    async getExample(){
-        let data = await this.prompt( DATA.Q_EXAMPLE );
-        this.example = data.example;
+    async getAlData(){
+        let data = await this.prompt( DATA.Q_ALDATA );
+        this.aldata = data.aldata;
+
+        console.log( 'aldata', this.aldata );
     }
 
     fileExists( file ) {

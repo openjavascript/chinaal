@@ -100,7 +100,7 @@ var App = function () {
             new Promise(function (resolve) {
                 setTimeout(resolve, 1);
             }).then(function () {
-                return _this.getExample();
+                return _this.getAlData();
             }).then(function () {
                 _this.isGood = 1;
 
@@ -150,7 +150,7 @@ var App = function () {
             return getConfirm;
         }()
     }, {
-        key: "getExample",
+        key: "getAlData",
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var data;
@@ -159,14 +159,16 @@ var App = function () {
                         switch (_context2.prev = _context2.next) {
                             case 0:
                                 _context2.next = 2;
-                                return this.prompt(DATA.Q_EXAMPLE);
+                                return this.prompt(DATA.Q_ALDATA);
 
                             case 2:
                                 data = _context2.sent;
 
-                                this.example = data.example;
+                                this.aldata = data.aldata;
 
-                            case 4:
+                                console.log('aldata', this.aldata);
+
+                            case 5:
                             case "end":
                                 return _context2.stop();
                         }
@@ -174,11 +176,11 @@ var App = function () {
                 }, _callee2, this);
             }));
 
-            function getExample() {
+            function getAlData() {
                 return _ref2.apply(this, arguments);
             }
 
-            return getExample;
+            return getAlData;
         }()
     }, {
         key: "fileExists",
