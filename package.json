@@ -1,7 +1,7 @@
 {
   "name": "chinaal",
   "version": "1.0.0",
-  "description": "example for sample babel js project ",
+  "description": "generate china administraction layout data",
   "main": "src/main.js",
   "bin": {
     "chinaal": "bin/main.js"

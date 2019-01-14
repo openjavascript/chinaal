@@ -118,10 +118,12 @@ export default class App {
         console.log( info( `github: ${this.packJSON.repository.url}` ) );
 
         console.log();
-        console.log( info( '使用:' ) );
-        console.log( info( '     方法1: 使用说明' ) );
+        console.log( ( '使用:' ) );
+        console.log( ( '     方法1: 切换到项目根目录, 然后执行命令 chinaal' ) );
+        console.log( info('         cd projectRoot && chinaal ') ); 
         console.log();
-        console.log( info( '     方法2: 使用说明' ) );
+        console.log( ( '     方法2: 使用 chinaal 路径, 支持相对路径' ) );
+        console.log( info('         chinaal /var/www/your_project_root ' ) ); 
         console.log();
     }
 
