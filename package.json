@@ -1,6 +1,6 @@
 {
   "name": "chinaal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate china administraction layout data",
   "main": "src/main.js",
   "bin": {
