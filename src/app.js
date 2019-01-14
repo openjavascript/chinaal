@@ -29,6 +29,7 @@ export default class App {
         this.projectRoot = projectRoot;
         this.packJSON = packJSON;
 
+
         console.log( [ 
             'appRoot: ' + this.appRoot
             , 'projectRoot: ' + this.projectRoot 
@@ -61,12 +62,6 @@ export default class App {
         }).then( () => {
             return this.getAlFilePath();
         }).then( () => {
-            this.splitSource();
-
-            return new Promise( function( resolve ){
-                setTimeout( resolve, 1);
-            });
-        }).then( () => {
             this.isGood = 1;
 
             return new Promise( function( resolve ){
@@ -82,25 +77,6 @@ export default class App {
 		 if( this.confirm == 'no' ) return;
             this.project = new ProjectExample( this );
         });
-    }
-
-    splitSource(){
-        let file = fs.readFileSync( this.sourcePath, 'utf8' );
-        file = file.replace( /[ \t]+$/gm, '' );
-        file = file.split( /[\r\n]+/g );
-
-        this.sourceAr = file;
-
-        this.keyItems = {};
-
-        file.map( (item)=>{
-            let tmp = item.split( /[\s]+/g )
-            if( tmp.length < 2 ) return;
-
-            this.keyItems[ tmp[0] ] = tmp[1];
-        });
-
-        console.log( this.keyItems );
     }
 
     async getConfirm(){

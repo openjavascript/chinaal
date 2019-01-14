@@ -102,12 +102,6 @@ var App = function () {
             }).then(function () {
                 return _this.getAlFilePath();
             }).then(function () {
-                _this.splitSource();
-
-                return new Promise(function (resolve) {
-                    setTimeout(resolve, 1);
-                });
-            }).then(function () {
                 _this.isGood = 1;
 
                 return new Promise(function (resolve) {
@@ -123,28 +117,6 @@ var App = function () {
                 if (_this.confirm == 'no') return;
                 _this.project = new _ProjectExample2.default(_this);
             });
-        }
-    }, {
-        key: "splitSource",
-        value: function splitSource() {
-            var _this2 = this;
-
-            var file = _fsExtra2.default.readFileSync(this.sourcePath, 'utf8');
-            file = file.replace(/[ \t]+$/gm, '');
-            file = file.split(/[\r\n]+/g);
-
-            this.sourceAr = file;
-
-            this.keyItems = {};
-
-            file.map(function (item) {
-                var tmp = item.split(/[\s]+/g);
-                if (tmp.length < 2) return;
-
-                _this2.keyItems[tmp[0]] = tmp[1];
-            });
-
-            console.log(this.keyItems);
         }
     }, {
         key: "getConfirm",
